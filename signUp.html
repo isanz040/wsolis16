@@ -20,7 +20,7 @@
   <body>
   <div id='page-wrap'>
 	  <header class='main' id='h1'>
-		  <span class="right"><a href="signUp.html">SignUp</a></span>
+		  <span class="right"><a href="signUp.html">SignUp</a>&nbsp;</span>
 		  <span class="right"><a href="/login">LogIn</a> </span>
 		  <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
 		<h2>Quiz: crazy questions</h2>
@@ -53,7 +53,7 @@
 				
 			<br/>
 				<label class="label">Espezialitatea<font color="RED">*</font>: </label>
-				<select id ="espezialitatea" name="espezialitatea" class="form-select">
+				<select id ="espezialitatea" name="espezialitatea" class="form-select" >
 					  <option value="Aukeratu">--Aukeratu--</option>
 					  <option value="Konputagailuen Ingenieritza">Konputagailuen Ingenieritza</option>
 					  <option value="Konputazioa">Konputazioa</option>
@@ -65,8 +65,8 @@
 				<textarea class="textarea"rows="6" cols="60"> </textarea><br/>
 			<br/>
 				<label class="label">Argazkirik sartu nahi duzu?</label>
-				<input type=file name="fitxategiaIgo">
-				<input type=button name="bidali" value="Bidali" onclick="egiaztatu_luzapena(this.form, this.form.fitxategiaIgo.value)" > <br/>
+				<input type=file id="fitxategiaIgo" name="fitxategiaIgo">
+				<input type=button name="bidali" value="Bidali" onclick="egiaztatu_luzapena()" > <br/>
 			<br/>
 			<br/>
 			<br/>

@@ -1,5 +1,5 @@
 @charset "utf-8";
-* 						{margin: 0; padding: 0; }
+* 						{margin: 0; padding: 0;}
 body					{font: 16px Arial, sans-serif;}
 						/* background-image: url("irudiak/puzzle-fondoa.jpg");
 						 background-color: #FFF8DC;
@@ -19,13 +19,15 @@ nav span            { margin: 0px 10px 0px 0px;
 						display: inline-block;}
 
 #ErrorMsgs         	{ color: #f61; font-size: smaler}
-
+.right{
+	font: 18px Arial, sans-serif;
+	font-weight: 600;
+	float: left;
+}
 .legend{
 	font: 28px Arial, sans-serif;
 	float: left;
 }
-
-
 .label{
 	width: 12%;
 	font: 20px ;

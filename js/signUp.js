@@ -43,10 +43,18 @@ function ErregistroaBalidatu(){
 	}
 	
 	//ESPEZIALITATEAREN Balidazioa
-   	if (document.erregistro.espezialitatea.selectedIndex==0){ 
+	var espe= document.getElementById("espezialitatea").value;
+//	espe.onChange = function() {espezialitateaSelect(espe)};
+   	if (espe.selectedIndex==0){ 
 		zuzena = 0;
 	    alert("ERROREA: Agertzen diren aukeretako bat hautatu behar duzu derrigorrez.");       
-   	} 
+  /* 	}else if(espe.selectedIndex==4){
+		 var besteesp = document.createElement("INPUT");
+		 besteesp.setAttribute("id","besterik");
+   		 besteesp.setAttribute("type", "text");
+   		 besteesp.setAttribute("value", " ");
+    	 document.body.appendChild(besteesp); */
+	}
 	
    	//BALIOAK IKUSI
 	if (zuzena == 1){
@@ -63,27 +71,44 @@ function ErregistroaBalidatu(){
 
 }
 
-function egiaztatu_luzapena(formularioa, fitxategia) { 
-  
+function egiaztatu_luzapena() { 
+   var fitxategi = document.getElementById("fitxategiaIgo").value;
    luzapenak = new Array(".png", ".jpg"); //".doc", ".pdf"); 
    errorea= ""; 
-      //fitxategiaren luzapena lortu 
-      luzapen = (fitxategi.substring(fitxategi.lastIndexOf("."))).toLowerCase(); 
-      //alert (luzapen); 
-      //compruebo si la extensión está entre las onartuta 
-      onartuta = false; 
-      for (var i = 0; i < luzapenak.length; i++) { 
-         if (luzapenak[i] == luzapen) { 
+   //fitxategiaren luzapena lortu 
+   luzapen = (fitxategi.substring(fitxategi.lastIndexOf("."))).toLowerCase(); 
+   //zihurtatu luzapena onartuaetako bat dela. 
+   onartuta = false; 
+   
+    for (var i = 0; i < luzapenak.length; i++) { 
+       if (luzapenak[i] == luzapen) { 
          onartuta = true; 
          break; 
-         } 
-      } 
-      if (!onartuta) { 
-         errorea = "Zihurtatu fitxategien luzapena, hauetako bat izan beharko du:" + luzapenak.join(); 
-	  	 return 0;
-	  }else{
+        } 
+    } 
+    if (!onartuta) { 
+       errorea = "Zihurtatu fitxategien luzapena, hauetako bat izan beharko du:" + luzapenak.join(); 
+	   return 0;
+	}else{
 		  alert("Luzapena zuzena da");
 	  	  return 1;
-	  }
+	}
 }
 
+/*function espezialitateaSelect(espe){
+	
+	var esp= document.getElementById("espezialitatea").value;
+	if (esp.selectedIndex==0){ 
+	    alert("ERROREA: Agertzen diren aukeretako bat hautatu behar duzu derrigorrez.");       
+		return 0;
+   	}else if(esp.selectedIndex==4){
+		// esp.disabled = true;
+		var besteesp = document.createElement("INPUT");
+		 besteesp.setAttribute("id","besterik");
+   		 besteesp.setAttribute("type", "text");
+   		 besteesp.setAttribute("value", " ");
+    	 document.body.appendChild(besteesp); 
+		
+	}
+return 1;
+}*/
