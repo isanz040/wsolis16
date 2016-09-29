@@ -1,1 +1,0 @@
-Telefono zenbakiak 9 digitu dituela egiaztatzen duen expresio erregularra ez dugu lortu beti funtzionatzea. Oso xinplea izan arren, Olatz-i ondo funtzionatzen zion baina Iñigori ez. Horregatik komentatu egin dugu ez dezan egin, dena ondo badijoa erakusten du eta azken mezua (formularioa bidaltzearen pareko delako).
