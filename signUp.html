@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	<title>Quizzes</title>
+    <!-- <link rel='stylesheet' type='text/css' href='stylesPWS/style.css' /> -->
+	<link rel='stylesheet' type='text/css' href='stylesPWS/signUp.css' /> 
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+		   href='stylesPWS/wide.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (max-width: 480px)'
+		   href='stylesPWS/smartphone.css' />
+		   
+	<script type="text/javascript" src="js/signUp.js"></script>		
+	
+  </head>
+  <body>
+  <div id='page-wrap'>
+	  <header class='main' id='h1'>
+		  <span class="right"><a href="signUp.html">SignUp</a></span>
+		  <span class="right"><a href="/login">LogIn</a> </span>
+		  <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
+		<h2>Quiz: crazy questions</h2>
+		</header>
+		<nav class='main' id='n1' role='navigation'>
+			<span><a href='layout.html'>Home</a></span>
+			<span><a href='/quizzes'>Quizzes</a></span>
+			<span><a href='credits.html'>Credits</a></span>
+		</nav>
+		<section class="main" id="s1">
+		
+	
+  <form id="erregistro" name="erregistro" action="" method="post" enctype="multipart/form-data" >
+	  
+	   <legend class="legend">Erregistroa</legend> <p ALIGN=left ><font color="RED">* derrigorrez bete beharreko datuak</font></p> <br/><br/>
+			<div>
+				<label class="label">Izen Abizenak <font color="RED">*</font>: </label>
+				<input type="text" id="Izena" name="izena" value="" class="form-input"><br/>
+			
+	  		<br/>
+	  			<label class="label">Eposta Elektronikoa<font color="RED">*</font>: </label>
+				<input type="text" id="emaila" name="emaila" value="" class="form-input"><br/>
+	 		<br/>
+				<label class="label">Pasahitza<font color="RED">*</font>: </label>
+				<input type="password" id="pasahitza" name="pasahitza" value="" class="form-input"><br/>
+			
+	 		<br/>
+				<label class="label">Telefono Zenbakia<font color="RED">*</font>: </label>
+				<input type="text" id="telefonoa" name="telefonoa" value="" class="form-input"><br/>
+				
+			<br/>
+				<label class="label">Espezialitatea<font color="RED">*</font>: </label>
+				<select id ="espezialitatea" name="espezialitatea" class="form-select">
+					  <option value="Aukeratu">--Aukeratu--</option>
+					  <option value="Konputagailuen Ingenieritza">Konputagailuen Ingenieritza</option>
+					  <option value="Konputazioa">Konputazioa</option>
+					  <option value="Software Ingeneritza">Software Ingeneritza</option>
+					  <option value="Besterik">Besterik</option>
+				</select><br/>
+			<br/>
+				<label class="label">Interesa duzun teknologiak eta erremintak: </label><br/>
+				<textarea class="textarea"rows="6" cols="60"> </textarea><br/>
+			<br/>
+				<label class="label">Argazkirik sartu nahi duzu?</label>
+				<input type=file name="fitxategiaIgo">
+				<input type=button name="bidali" value="Bidali" onclick="egiaztatu_luzapena(this.form, this.form.fitxategiaIgo.value)" > <br/>
+			<br/>
+			<br/>
+			<br/>
+				<input type="submit" value="Balidatu" class="button" onclick='ErregistroaBalidatu()'><br/>
+			<br/>
+				
+			</div>
+	   
+	 		<!--<p ALIGN=left class="label">Izen Abizenak <font color="RED">*</font>: <input type="text" id="Izena" name="izena" value="" class="form-input"></p><br/> -->
+			<!--<p ALIGN=left class="label">Eposta Elektronikoa <font color="RED">*</font>: <input type="text" id="emaila" name="emaila" value="" class="form-input"></p><br/> -->
+			<!--<p ALIGN=left class="label">Pasahitza <font color="RED">*</font>: <input type="password" id="pasahitza" name="pasahitza" value="" class="form-input"></p><br/>	 -->
+			<!--<p ALIGN=left class="label">Telefono Zenbakia <font color="RED">*</font>: <input type="text" id="telefonoa" name="telefonoa" value="" class="form-input"></p><br/>  -->
+			<!--<p ALIGN=left class="label">Espezialitatea <font color="RED">*</font>: 
+				<select id ="espezialitatea" name="espezialitatea" class="form-input">
+					  <option value="Aukeratu">--Aukeratu--</option>
+					  <option value="Konputagailuen Ingenieritza">Konputagailuen Ingenieritza</option>
+					  <option value="Konputazioa">Konputazioa</option>
+					  <option value="Software Ingeneritza">Software Ingeneritza</option>
+					  <option value="Besterik">Besterik</option>
+				</select>
+			</p><br/>
+	  
+			<p ALIGN=left>Interesa duzun teknologiak eta erremintak:<br/>
+				<textarea rows="6" cols="60"> </textarea>
+			</p><br/>
+	  
+	  		<p ALIGN=left>Argazkirik sartu nahi duzu?</p><br/>
+	  		<input type=file name="fitxategiaIgo">
+			<input type=button name="Submit" value="Bidali" onclick="egiaztatu_luzapena(this.form, this.form.fitxategiaIgo.value)" float:left> <br/>
+		<p ALIGN=left><input type="submit" value="Submit" onclick='ErregistroaBalidatu()'></p>-->
+	</form>
+
+    </section>
+	<footer class='main' id='f1'>
+		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
+		<a href='https://github.com'>Link GITHUB</a>
+	</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@charset "utf-8";
+* 						{margin: 0; padding: 0;}
+body					{font: 16px Georgia, serif;}
+
+#page-wrap				{margin: 2% auto; color: white;}
+#page-wrap >.main 		{border: 4px solid #FFF8DC; padding: 1%;
+						 margin-bottom: 1px; color: black;}
+
+section > div		{padding: 20px;float: left;}
+header				{background: #FFF8DC; text-align: center;font: 100% sans-serif;}
+nav, section		{background: #00FFFF; text-align: center;font: 100% sans-serif;}
+footer				{background: #FFF8DC; text-align: center;font: 100% sans-serif;}
+nav span            { margin: 0px 10px 0px 0px;
+						width: 50%;
+						display: inline-block;}
+
+#ErrorMsgs         	{ color: #f61; font-size: smaler}
