@@ -1,6 +1,6 @@
 <?php
 
-//$esteka = mysqli mysqli_connect ("u902840953_Quiz", “u902840953_olis", “C0nguit0s", “Quiz");
+//$esteka = mysqli mysqli_connect ("mysql.hostinger.es", "u902840953_olis", "C0nguit0s", "u902840953_quiz");
 $esteka= mysqli_connect("localhost", "root", "", "proba");
 
 if(!$esteka){
