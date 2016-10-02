@@ -1,15 +1,22 @@
-
 function ErregistroaBalidatu(){							
 	
 	//IZENA balidatzeko
 	var zuzena = 1;
 	var izen=document.getElementById("Izena");
-	var expresioa= /^[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+/g;
+	//var expresioa= /^[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+/g;
+	var expresioa =/^[A-Za-z]/g;
 	if(!expresioa.test(izen.value)){
 		zuzena = 0;
-		alert("ERROREA: Izen-Abizenak jartzea derrigorrezkoa duzu!");
+		alert("ERROREA: Izena jartzea derrigorrezkoa duzu");
 	}
-		
+	
+	var abizen=document.getElementById("abizenak");
+	expresioa= /^[A-Za-z]+\s[A-Za-z]/g;
+	if(!expresioa.test(abizen.value)){
+		zuzena = 0;
+		alert("ERROREA: Abizenak jartzea derrigorrezkoa duzu");
+	}
+
 	//EMAILA balidatzeko
 	var emaila=document.getElementById("emaila");
 	expresioa= /^[a-z]+\d{3}\@ikasle\.ehu\.(eus|es)/g;
@@ -65,14 +72,15 @@ function ErregistroaBalidatu(){
 			sAux +="BALIOA: " + frm.elements[i].value+"\n";
 		}
 		alert(sAux);
+		return true;
 	}
 	
-  return true;
+  return false;
 
 }
-
+/*
 function egiaztatu_luzapena() { 
-   var fitxategi = document.getElementById("fitxategiaIgo").value;
+   var fitxategi = document.getElementById("argazkiaIgo").value;
    luzapenak = new Array(".png", ".jpg"); //".doc", ".pdf"); 
    errorea= ""; 
    //fitxategiaren luzapena lortu 
@@ -93,7 +101,7 @@ function egiaztatu_luzapena() {
 		  alert("Luzapena zuzena da");
 	  	  return 1;
 	}
-}
+}*/
 
 /*function espezialitateaSelect(espe){
 	
@@ -112,3 +120,4 @@ function egiaztatu_luzapena() {
 	}
 return 1;
 }*/
+	
