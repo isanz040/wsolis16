@@ -2,7 +2,7 @@ function ErregistroaBalidatu(){
 	
 	//IZENA balidatzeko
 	var zuzena = 1;
-	var izen=document.getElementById("Izena");
+	var izen =document.getElementById("Izena");
 	//var expresioa= /^[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+/g;
 	var expresioa =/^[A-Za-z]/g;
 	if(!expresioa.test(izen.value)){
@@ -51,16 +51,9 @@ function ErregistroaBalidatu(){
 	
 	//ESPEZIALITATEAREN Balidazioa
 	var espe= document.getElementById("espezialitatea").value;
-//	espe.onChange = function() {espezialitateaSelect(espe)};
    	if (espe.selectedIndex==0){ 
 		zuzena = 0;
-	    alert("ERROREA: Agertzen diren aukeretako bat hautatu behar duzu derrigorrez.");       
-  /* 	}else if(espe.selectedIndex==4){
-		 var besteesp = document.createElement("INPUT");
-		 besteesp.setAttribute("id","besterik");
-   		 besteesp.setAttribute("type", "text");
-   		 besteesp.setAttribute("value", " ");
-    	 document.body.appendChild(besteesp); */
+	    alert("ERROREA: Agertzen diren aukeretako bat hautatu behar duzu derrigorrez.");      
 	}
 	
    	//BALIOAK IKUSI
@@ -74,20 +67,18 @@ function ErregistroaBalidatu(){
 		alert(sAux);
 		return true;
 	}
-	
   return false;
+};
 
-}
 /*
 function egiaztatu_luzapena() { 
    var fitxategi = document.getElementById("argazkiaIgo").value;
-   luzapenak = new Array(".png", ".jpg"); //".doc", ".pdf"); 
+   luzapenak = new Array(".png", ".jpg",); //".doc", ".pdf"); 
    errorea= ""; 
    //fitxategiaren luzapena lortu 
    luzapen = (fitxategi.substring(fitxategi.lastIndexOf("."))).toLowerCase(); 
    //zihurtatu luzapena onartuaetako bat dela. 
    onartuta = false; 
-   
     for (var i = 0; i < luzapenak.length; i++) { 
        if (luzapenak[i] == luzapen) { 
          onartuta = true; 
@@ -103,21 +94,16 @@ function egiaztatu_luzapena() {
 	}
 }*/
 
-/*function espezialitateaSelect(espe){
-	
-	var esp= document.getElementById("espezialitatea").value;
-	if (esp.selectedIndex==0){ 
-	    alert("ERROREA: Agertzen diren aukeretako bat hautatu behar duzu derrigorrez.");       
-		return 0;
-   	}else if(esp.selectedIndex==4){
-		// esp.disabled = true;
-		var besteesp = document.createElement("INPUT");
-		 besteesp.setAttribute("id","besterik");
-   		 besteesp.setAttribute("type", "text");
-   		 besteesp.setAttribute("value", " ");
-    	 document.body.appendChild(besteesp); 
-		
-	}
-return 1;
-}*/
-	
+function espezialitateaSelect(){
+	var formu = document.getElementById("erregistro");	
+	var esp= document.createElement("INPUT");
+	esp.setAttribute("type","text");
+	esp.setAttribute("value","Sartu zure espezialitatea");
+	esp.setAttribute("name","besterik");	
+	formu.appendChild(esp);
+};
+
+function argazkiaAurreikuspen(event){
+	var aurreikuspena = document.getElementById("aurreikusi");
+    aurreikuspena.src = URL.createObjectURL(event.target.files[0]);
+};
