@@ -28,19 +28,28 @@ if(!$esteka){
 	/*$interesa=$_POST["interesa"];*/
 	/*$argazkia= $_POST["argazkiaIgo"];*/
 
-	$sql="INSERT INTO Erabiltzaile(Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea')";
+	if (!filter_var($emaila, FILTER_VALIDATE_EMAIL) == false) {
+		echo ("$emaila is a valid email address.<br/>");
 
-	$ema = mysqli_query($esteka, $sql);
+		$sql="INSERT INTO Erabiltzaile(Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea')";
 
-	if(!$ema){
-		die ('Errorea query-a gauzatzerakoan:' . msqli_error());
+		$ema = mysqli_query($esteka, $sql);
+
+		if(!$ema){
+			die ('Errorea query-a gauzatzerakoan:' . msqli_error());
+		} else {
+			echo "Erregistro bat gehitu da!";
+			echo "<p> <a href='ShowUsers.php'>Erregistroak ikusi</a></p>";
+			echo "<p> <a href='layout.html'>Bueltatu hasierara</a></p>";
+		}
 	} else {
-		echo "Erregistro bat gehitu da!";
-		echo "<p> <a href='ShowUsers.php'> Erregistroak ikusi</a></p>";
+		echo("$emaila is not a valid email address.<br/>");
+		echo "<p> <a href='ShowUsers.php'>Erregistroak ikusi</a></p>";
+		echo "<p> <a href='layout.html'>Bueltatu hasierara</a></p>";
 	}
 }
 
 mysqli_close($esteka);
 
 ?>
-	
+		

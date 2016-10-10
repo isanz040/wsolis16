@@ -30,7 +30,8 @@ if(!$esteka){
 
 	}
 
-	echo '</table>';
+	echo '</table><br/>';
+	echo "<p> <a href='layout.html'>Bueltatu hasierara</a></p>";
 	mysqli_free_result($ema);
 }
 

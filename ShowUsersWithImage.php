@@ -34,7 +34,7 @@ if(!$esteka){
 
         }else{
                 echo '<tr><td>'.$row['Izena'].'</td> <td>'.$row['Abizenak'].'</td> <td>'.$row['Emaila']. '</td> <td>'.
-                $row['Pasahitza'].'</td> <td>'.$row['Telefonoa'].'</td> <td>'.$row['Espezialitatea'].'</td><td><img src="data:image/jpeg;base64,'.base64_encode( $row['Argazkia'] ).'" style= "width:100px;height:70px"'></img></td></tr>';
+                $row['Pasahitza'].'</td> <td>'.$row['Telefonoa'].'</td> <td>'.$row['Espezialitatea'].'</td><td><img src='data:image/jpeg;base64,".base64_encode( $row['Argazkia'] )."' style= 'width:100px;height:70px'></img></td></tr>';
 
         }
 	}
@@ -46,3 +46,4 @@ if(!$esteka){
 mysqli_close($esteka);
 
 ?>
+	
