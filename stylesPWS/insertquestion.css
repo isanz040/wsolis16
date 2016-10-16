@@ -1,0 +1,36 @@
+@charset "utf-8";
+* 	      {margin: 0; padding: 0;}
+
+body {
+
+   font: 16px Arial, sans-serif;
+};
+
+#formularioa{
+    margin:15;
+}
+
+
+label{
+    color: #000000;
+    font: bold 18px Arial, sans-serif;
+}
+
+
+/*"Sartu" botoiari animazioa emateko*/
+.botoia:active{
+    position: relative;
+    top: 3px;
+}
+
+footer {
+
+    background: #FFF8DC; 
+    text-align: center;
+    font: 100% sans-serif;
+}
+ 
+
+
+
+	

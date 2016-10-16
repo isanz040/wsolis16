@@ -1,7 +1,7 @@
-function ErregistroaBalidatu(){							
+function ErregistroaBalidatu(){	
+	var zuzena = 1;						
 	
 	//IZENA balidatzeko
-	var zuzena = 1;
 	var izen =document.getElementById("Izena");
 	//var expresioa= /^[A-Za-z]+\s[A-Za-z]+\s[A-Za-z]+/g;
 	var expresioa =/^[A-Za-z]/g;
@@ -19,7 +19,7 @@ function ErregistroaBalidatu(){
 
 	//EMAILA balidatzeko
 	var emaila=document.getElementById("emaila");
-	expresioa= /^[a-z]+\d{3}\@ikasle\.ehu\.(eus|es)/g;
+	expresioa= /^[a-z]+\d{3}\@(ikasle\.)?ehu\.(eus|es)/g;
 	if(!expresioa.test(emaila.value) ){
 		zuzena = 0;
 		alert("ERROREA: " + emaila.value+ " helbidea ez da zuzena");		
@@ -51,9 +51,10 @@ function ErregistroaBalidatu(){
 	
 	//ESPEZIALITATEAREN Balidazioa
 	var espe= document.getElementById("espezialitatea").value;
-   	if (espe.selectedIndex==0){ 
+	var beste= document.getElementById("besterik").value;
+   	if (espe=="Aukeratu" || (espe=="Besterik" && beste=="")){
 		zuzena = 0;
-	    alert("ERROREA: Agertzen diren aukeretako bat hautatu behar duzu derrigorrez.");      
+		alert("ERROREA: Espezialitate bat hautatu behar duzu derrigorrez.");      
 	}
 	
    	//BALIOAK IKUSI
@@ -67,43 +68,83 @@ function ErregistroaBalidatu(){
 		alert(sAux);
 		return true;
 	}
-  return false;
+	return false;
 };
 
-/*
-function egiaztatu_luzapena() { 
-   var fitxategi = document.getElementById("argazkiaIgo").value;
-   luzapenak = new Array(".png", ".jpg",); //".doc", ".pdf"); 
-   errorea= ""; 
-   //fitxategiaren luzapena lortu 
-   luzapen = (fitxategi.substring(fitxategi.lastIndexOf("."))).toLowerCase(); 
-   //zihurtatu luzapena onartuaetako bat dela. 
-   onartuta = false; 
-    for (var i = 0; i < luzapenak.length; i++) { 
-       if (luzapenak[i] == luzapen) { 
-         onartuta = true; 
-         break; 
-        } 
-    } 
-    if (!onartuta) { 
-       errorea = "Zihurtatu fitxategien luzapena, hauetako bat izan beharko du:" + luzapenak.join(); 
-	   return 0;
-	}else{
-		  alert("Luzapena zuzena da");
-	  	  return 1;
+function GalderaBalidatu(){	
+	var zuzena = 1;						
+	
+	//GALDERA balidatzeko
+	var galdera= document.getElementById("galderatestua").value;
+	if(galdera==""){
+		zuzena = 0;
+		alert("ERROREA: Galdera idaztea derrigorrezkoa duzu");
 	}
-}*/
+	
+	//ERANTZUNA balidatzeko
+	var erantzuna= document.getElementById("eranZuzena").value;
+	if(erantzuna==""){
+		zuzena = 0;
+		alert("ERROREA: Erantzuna idaztea derrigorrezkoa duzu");
+	}
+
+	//EMAILA balidatzeko
+	var emaila= document.getElementById("egilePosta");
+	expresioa= /^[a-z]+\d{3}\@(ikasle\.)?ehu\.(eus|es)/g;
+	if(!expresioa.test(emaila.value) ){
+		zuzena = 0;
+		alert("ERROREA: " + emaila.value + " helbidea ez da zuzena");		
+	}
+	
+   	//BALIOAK IKUSI
+	if (zuzena == 1){
+		var sAux=""
+		var frm=document.getElementById("erregistro");
+		for (i=0;i<frm.elements.length;i++){	
+			sAux +="IZENA: " + frm.elements[i].name+"";
+			sAux +="BALIOA: " + frm.elements[i].value+"\n";
+		}
+		alert(sAux);
+		return true;
+	}
+	return false;
+};
+
+///*
+//function egiaztatu_luzapena() { 
+//   var fitxategi = document.getElementById("argazkiaIgo").value;
+//   luzapenak = new Array(".png", ".jpg",); //".doc", ".pdf"); 
+//   errorea= ""; 
+//   //fitxategiaren luzapena lortu 
+//   luzapen = (fitxategi.substring(fitxategi.lastIndexOf("."))).toLowerCase(); 
+//   //zihurtatu luzapena onartuaetako bat dela. 
+//   onartuta = false; 
+//    for (var i = 0; i < luzapenak.length; i++) { 
+//       if (luzapenak[i] == luzapen) { 
+//         onartuta = true; 
+//         break; 
+//        } 
+//    } 
+//    if (!onartuta) { 
+//       errorea = "Zihurtatu fitxategien luzapena, hauetako bat izan beharko du:" + luzapenak.join(); 
+//	   return 0;
+//	}else{
+//		  alert("Luzapena zuzena da");
+//	  	  return 1;
+//	}
+//}*/
 
 function espezialitateaSelect(){
-	var formu = document.getElementById("erregistro");	
-	var esp= document.createElement("INPUT");
-	esp.setAttribute("type","text");
-	esp.setAttribute("value","Sartu zure espezialitatea");
-	esp.setAttribute("name","besterik");	
-	formu.appendChild(esp);
+	document.getElementById("BesterikLabel").style.display = 'block';
+	document.getElementById("besterik").style.display = 'block';
+};
+
+function DeSelect(){
+	document.getElementById("BesterikLabel").style.display = 'none';
+	document.getElementById("besterik").style.display = 'none';
 };
 
 function argazkiaAurreikuspen(event){
 	var aurreikuspena = document.getElementById("aurreikusi");
     aurreikuspena.src = URL.createObjectURL(event.target.files[0]);
-};
+};		
