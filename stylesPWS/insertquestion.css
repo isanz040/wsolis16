@@ -2,25 +2,58 @@
 * 	      {margin: 0; padding: 0;}
 
 body {
-
    font: 16px Arial, sans-serif;
-};
-
-#formularioa{
-    margin:15;
 }
 
+#formularioa{
+	margin-left: 4em;
+	height: 590px;
+	width: 750px;
+	
+}
+
+input[type=radio]{
+
+	  width   : 28px;
+	  margin  : 0;
+	  padding : 0;
+ 
+}
+
+input[type=text]{
+		border-radius:1px;
+		font: 15px Arial, sans-serif;
+		height: 22px;
+		line-height: 18px;
+		width: 200px;
+}
 
 label{
-    color: #000000;
-    font: bold 18px Arial, sans-serif;
+		color: #000000;
+		font: bold 18px Arial, sans-serif;
 }
 
 
 /*"Sartu" botoiari animazioa emateko*/
-.botoia:active{
-    position: relative;
-    top: 3px;
+.botoia {
+	float: right;
+	width:130px;
+	height:20px;
+    border: 3px solid #900;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+	margin-right: 2em;
+	border-radius: 25px 25px 25px 25px;
+	-moz-border-radius: 25px 25px 25px 25px;
+	-webkit-border-radius: 25px 25px 25px 25px;
+	border: 2px solid #000000;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 footer {
@@ -32,5 +65,4 @@ footer {
  
 
 
-
-	
+		

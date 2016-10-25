@@ -24,8 +24,8 @@
  
                     <p><input type="submit" name="loginBidali" value="Sartu" class="botoia"></p>
                 </form>
-            </div><!--amaiera gorputza-->
-        </div><!-- amaiera edukiontzi -->
+            </div><!-- gorputza-->
+        </div><!-- edukiontzi -->
 
        <p><a href='layout.html'>Bueltatu hasierara</a></p>
    </body>
@@ -42,14 +42,38 @@
 		$check_erabiltzaileak="select * from Erabiltzaile WHERE Emaila='$email' AND Pasahitza='$pass'";
 		$run=mysqli_query($esteka,$check_erabiltzaileak);
 		$cont= mysqli_num_rows($run);
+        
+		$ordua=time();
+        
 		
 		 if($cont==1){  
+             
+           
+/*	        $check_Konexioak="select * from Konexioak";
+		$run1=mysqli_query($esteka,$check_Konexioak);
+		$cont2= mysqli_num_rows($run1);    */
+
+			$sql="INSERT INTO Konexioak(ErabPosta, KonexioOrdua) VALUES('$email', '$ordua')";
+
+			$ema = mysqli_query($esteka, $sql);
+
+			if(!$ema){
+				die ('Errorea query-a gauzatzerakoan:' . msqli_error());
+			} else {
+				echo "Erregistro bat gehitu da!";
+				echo "<p> <a href='ShowUsers.php'>Erregistroak ikusi</a></p>";
+				echo "<p> <a href='layout.html'>Bueltatu hasierara</a></p>";
+			}
+                 
 		    header('location:InsertQuestion.php');  
+            
+
 		 }else {
 		   echo "<script>alert('Erabiltzaile posta edo pasahitza ez dira zuzenak!')</script>"; 
 		    
 		 }  
 	}
+
 
 	require 'DBKonexioaItxi.php';
 
