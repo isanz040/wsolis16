@@ -44,7 +44,7 @@
 		$cont= mysqli_num_rows($run);
 		
 		 if($cont==1){  
-		    header('location:InsertQuestion.php');  
+		    header("location:handlingQuizzes.php?login=$email");  
 		 }else {
 		   echo "<script>alert('Erabiltzaile posta edo pasahitza ez dira zuzenak!')</script>"; 
 		    

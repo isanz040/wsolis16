@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="seeQuestions.xsl"?>
-
 <assessmentItems>
 <assessmentItem complexity="0">
 	<itemBody> 
@@ -35,4 +34,25 @@
 		<value>vivamexiko123@ikasle.ehu.eus</value>
 	</senderEmail>
 </assessmentItem>
-<assessmentItem complexity="3"><itemBody><p>galdera8</p></itemBody><correctResponse><value>bai8</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="5"><itemBody><p>Beste probatxo bat</p></itemBody><correctResponse><value>Bai, ondo dijoa </value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem></assessmentItems>
+<assessmentItem complexity="5">
+	<itemBody>
+		<p>Beste probatxo bat</p>
+	</itemBody>
+	<correctResponse>
+		<value>Bai, ondo dijoa </value>
+	</correctResponse>
+	<senderEmail>
+		<value>oromeo001@ikasle.ehu.eus</value>
+	</senderEmail>
+</assessmentItem>
+<assessmentItem complexity="4">
+	<itemBody>
+		<p>Ba al doa AJAX?</p>
+	</itemBody>
+	<correctResponse>
+		<value>Noski!</value>
+	</correctResponse>
+	<senderEmail>
+		<value>vivamexiko123@ikasle.ehu.eus</value>
+	</senderEmail>
+</assessmentItem></assessmentItems>

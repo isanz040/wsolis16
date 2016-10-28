@@ -3,7 +3,7 @@
 	<head>
 		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 		<title>Aurkitu Erabiltzailea</title>
-			<link rel='stylesheet' type='text/css' href='stylesPWS/userInform.css' /> 
+		<link rel='stylesheet' type='text/css' href='stylesPWS/userInform.css' /> 
 		<link rel='stylesheet' 
 			   type='text/css' 
 			   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
@@ -12,65 +12,76 @@
 			   type='text/css' 
 			   media='only screen and (max-width: 480px)'
 			   href='stylesPWS/smartphone.css' />
-  
-	   <script type="text/javascript">
+   
+               <script type="text/javascript">
+
 			function erabiltzaileaBilatu(){
 				var aurkitua=false;
-				var xmlDoc = document.getElementById('erabiltzaileDatuak').contentDocument;
-				var emaila = document.getElementById("emaila").value;
-				var emaila_aurki=xmlDoc.getElementsByTagName('eposta');
-				var izena_aurki=xmlDoc.getElementsByTagName('izena');
-				var abiz1_aurki= mlDoc.getElementsByTagName('abizena1');
-				var abiz2_aurki=xmlDoc.getElementsByTagName('abizena2');
-				var telf_aurki=xmlDoc.getElementsByTagName('telefonoa');
-				for(var i = 0; i < emaila_aurki.length;i++){
-					if(emaila==emaila_aurki[i].childNodes[0].nodeValue){
+                                var xmlDoc = document.getElementById('erabiltzaileDatuak').contentDocument;
+				var posta = document.getElementById('posta').value;
+				var emaila_aurki= xmlDoc.getElementsByTagName("eposta");
+				var izen_aurki= xmlDoc.getElementBysTagName("izena");
+				var abiz1_aurki= xmlDoc.getElementBysTagName("abizena1");
+				var abiz2_aurki= xmlDoc.getElementBysTagName("abizena2");
+				var telf_aurki= xmlDoc.getElementBysTagName("telefonoa");
+
+				  for(var i = 0; i < emaila_aurki.length;i++){
+
+					 if(posta==emaila_aurki[i].childNodes[0].nodeValue){
+
 						aurkitua=true;
-						var izena = izena_aurki[i].childNodes[0].nodeValue;
+						var izena = izen_aurki[i].childNodes[0].nodeValue;
 						var abizenak = abiz1_aurki[i].childNodes[0].nodeValue + " "+ abiz2_aurki[i].childNodes[0].nodeValue;
 						var telefonoa = telf_aurki[i].childNodes[0].nodeValue;
-						document.getElementById("izena").value=izena;
-						document.getElementById("abizenak").value=abizenak;
-						document.getElementById("telefonoa").value=telefonoa;
+
+						document.getElementById("izena").disabled = false;
+                                                document.getElementById("izena").value=izena;
+                                                
+						document.getElementById("abizenak").disabled=false;
+                                                document.getElementById("abizenak").value=abizenak;
+                                               						
+                                                document.getElementById("telefonoa").disabled=false;
+                                                document.getElementById("telefonoa").value=telefonoa;
+                                               
 						break;
-					}
-				}
-				if(!aurkitua){
+					 }
+				 }
+
+				 if(!aurkitua){
 					alert("Idatzi den e-posta ez dago erregistratua.Sartu berriro");
 					document.getElementById("izena").value="";
 					document.getElementById("abizenak").value="";
 					document.getElementById("telefonoa").value="";
-				}
+				 }
 			}
-		</script>
+		  </script>
 	</head>
 	<body>
 		<OBJECT id="erabiltzaileDatuak" data="erabiltzaileak.xml" type="text/xml" style="display:none"> </OBJECT>
 		<div id="edukiontzi">
-				<form action="" method="post">
-				  <p ALIGN=left ><font color="RED">* derrigorrez bete beharreko datuak</font></p> <br/><br/>
-					<div id="gorputza">
-						<h1>Erabiltzailea Bilatu</h1>
-						<br/>
-							<label class="label">Eposta Elektronikoa<font color="RED">*</font>: </label><br/>
-							<input type="text" id="emaila" name="emaila" value="" class="form-input" placeholder="adibidea003@ehu.eus"  required ><br/>
-						<br/>
-							<label class="label">Izena: </label><br/>
-							<input type="text" id="izena" name="izena" value="" class="form-input" disabled="true"><br/>
-						<br/>
-							<label class="label">Abizenak: </label><br/>
-							<input type="text" id="abizenak" name="abizenak" value="" class="form-input" disabled="true"><br/>
-						<br/>
-							<label class="label">Telefono Zenbakia: </label><br/>
+			<form action="" method="post">
+			       <p ALIGN=left ><font color="RED">* derrigorrez bete beharreko datuak</font></p> <br/><br/>
+				<div id="gorputza">
+					<h1>Erabiltzailea Bilatu</h1>
+					<br/>
+				        	<label class="label">Eposta Elektronikoa<font color="RED">*</font>: </label><br/>
+						<input type="text" id="posta" name="emaila" value="" class="form-input" placeholder="adibidea003@ehu.eus"  required ><br/>
+					<br/>
+						<label class="label">Izena: </label><br/>
+						<input type="text" id="izena" name="izena" value="" class="form-input" disabled="true"><br/>
+					<br/>
+						<label class="label">Abizenak: </label><br/>
+						<input type="text" id="abizenak" name="abizenak" value="" class="form-input" disabled="true"><br/>
+					<br/>
+						<label class="label">Telefono Zenbakia: </label><br/>
 						<input type="text" id="telefonoa" name="telefonoa" value="" class="form-input" disabled="true"><br/>
 						
-						<br/>
-						<button id="bilatuBotoia" type="button" class="botoia" onclick="javascript:erabiltzaileaBilatu()">Bilatu</button><br/>
-					</div>
-				   
-				</form>
-			</div>
-	
+					<br/>
+					<button id="bilatuBotoia" type="button" class="botoia" onclick="javascript:erabiltzaileaBilatu()">Bilatu</button><br/>
+					
+                               </div>   
+			</form>
+		</div>
 	</body>
 </html>
    

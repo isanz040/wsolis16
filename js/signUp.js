@@ -93,7 +93,7 @@ function GalderaBalidatu(){
 	expresioa= /^[a-z]+\d{3}\@(ikasle\.)?ehu\.(eus|es)/g;
 	if(!expresioa.test(emaila.value) ){
 		zuzena = 0;
-		alert("ERROREA: " + emaila.value + " helbidea ez da zuzena");		
+		alert("ERROREA: " + emaila.value + " helbidea ez da zuzena!");		
 	}
 	
    	//BALIOAK IKUSI
