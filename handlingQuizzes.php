@@ -18,12 +18,12 @@
 				obj.innerHTML = erantzuna;
 			}
 		}
-		function datuakEskatu(){
+		setInterval(function datuakEskatu(){
 			var egilea = document.getElementById('egilePosta').value;
 			var eskaera= "erabGalderakIkusi.php?login=".concat(egilea);
 			xhttp.open("GET", eskaera, true);
 			xhttp.send(null);
-		}
+		}, 5000);
 	</script>
   </head>
   <body> 
