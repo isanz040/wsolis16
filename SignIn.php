@@ -13,26 +13,46 @@
   </style>  
 
   <body> 
-        <div id="edukiontzi">
-            <div id="gorputza">
-                <form id="form-login" action="SignIn.php" method="post" >
-                    <p><label >Erabiltzaile Posta:</label></p>
-                        <input name="erabPosta" type="text" id="loginErabiltzailea" placeholder="adibidea003@ehu.eus"></p>
- 
-                    <p><label>Pasahitza:</label></p>
-                        <input name="erabPasahitza" type="password" id="loginPasahitza" placeholder="7hG95hkjkalkop98" ></p>
- 
-                    <p><input type="submit" name="loginBidali" value="Sartu" class="botoia"></p>
-                </form>
-            </div><!--amaiera gorputza-->
-        </div><!-- amaiera edukiontzi -->
+     <div id='page-wrap'>
+	  <header class='main' id='h1'>
+		  <span class="right"><a href="signUp.html">SignUp</a>&nbsp;&nbsp;</span>
+		  <span class="right"><a href="SignIn.php">LogIn</a> </span>
+		  <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
+		<h2>Quiz: Crazy questions</h2>
+		</header>
+		<nav class='main' id='n1' role='navigation'>
+			<span><a href='layout.html'>Home</a></span>
+			<span><a href='ShowQuizzes.php'>Show Quizzes</a></span>
+			<span><a href='credits.html'>Credits</a></span>
+		</nav>
 
-       <p><a href='layout.html'>Bueltatu hasierara</a></p>
+
+      <section class="main" id="s1">  
+          <div id="gorputza">
+               <form id="form-login" action="SignIn.php" method="post" >
+                   <p><label >Erabiltzaile Posta:</label></p>
+                   <input name="erabPosta" type="text" id="loginErabiltzailea" placeholder="adibidea003@ehu.eus"></p>
+ 
+                   <p><label>Pasahitza:</label></p>
+                   <input name="erabPasahitza" type="password" id="loginPasahitza" placeholder="7hG95hkjkalkop98" ></p>
+ 
+                   <p><input type="submit" name="loginBidali" value="Sartu" class="botoia"></p>
+               </form>
+          </div><!--amaiera gorputza-->
+      
+        <p><a href='layout.html'>Bueltatu hasierara</a></p>
+      </section>
+	
+        <footer class='main' id='f1'>
+		<p><a href="http://en.wikipedia.org/wiki/Quiz" target="_blank">What is a Quiz?</a></p>
+		<a href='https://github.com'>Link GITHUB</a>
+	</footer>
+       </div>
    </body>
 </html>	
-	<?php
-
-	require 'DBKonexioa.php';//datu-baserako konekxio fitxategia
+	
+<?php
+   require 'DBKonexioa.php';//datu-baserako konekxio fitxategia
 
 
 	if (isset($_POST['erabPasahitza'])){
@@ -53,4 +73,4 @@
 
 	require 'DBKonexioaItxi.php';
 
-	?>
+?>	

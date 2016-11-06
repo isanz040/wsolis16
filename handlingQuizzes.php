@@ -3,16 +3,18 @@
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 	<title>Galderak Sartu</title> 
-	<link rel='stylesheet' type='text/css' href='stylesPWS/insertquestion.css' /> 
+	<link rel='stylesheet' type='text/css' href='stylesPWS/insertquestion.css' />
 	<link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='stylesPWS/wide.css' />
 	<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='stylesPWS/smartphone.css' />
-
-	<script type="text/javascript" src="js/signUp.js"></script>
+	
+        <script type="text/javascript" src="js/signUp.js"></script>
 	<script type="text/javascript">
-		xhttp = new XMLHttpRequest();
+            function galderakIkusi() {
+                alert("Segituan bistaratuko zaizkizu galderak....itxaron pixka bat");
+  		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 			if (xhttp.readyState==4) {  //fitxategia kargatzean
-				//alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
+				alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
 				var erantzuna = xhttp.responseText;	// zerbitzariaren erantzuna testu huts (html) formatuan
 				var obj = document.getElementById('emaitza');
 				obj.innerHTML = erantzuna;
@@ -24,6 +26,7 @@
 			xhttp.open("GET", eskaera, true);
 			xhttp.send(null);
 		}, 5000);
+           }
 	</script>
   </head>
   <body> 
@@ -58,10 +61,10 @@ erantzuna..."></textarea><br/><br/>
 		</div>
                 <br/>
                 <br/>
-		    <p><input type="submit" name="galderaBidali" value="Bidali Galdera" class="botoia" onclick="return GalderaBalidatu()"></p>
+		<input type="submit" name="galderaBidali" value="Bidali Galdera" class="botoia" onclick="return GalderaBalidatu()">
+                <input type="button" value="Galderak Ikusi" onclick="galderakIkusi()">
                 </form>                
-                <input type="button" value="Galderak Ikusi" onclick="datuakEskatu()">
-	        <!--input type="button" value="Galdera Bidali" onclick="GalderaBalidatu()"-->
+                
             </div><!--amaiera formularioa-->
         <br/>
         <br/>
@@ -136,4 +139,4 @@ erantzuna..."></textarea><br/><br/>
 
 require 'DBKonexioaItxi.php';
 
-?>	
+?>										

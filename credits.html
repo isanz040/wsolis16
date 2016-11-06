@@ -13,6 +13,8 @@
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
 		   href='stylesPWS/smartphone.css' />
+	<script type="text/javascript" src="js/Geo.js"></script>
+
   </head>
   <body>
   <div id='page-wrap' "background-color:lightblue;" >
@@ -31,14 +33,17 @@
     
 	
 	<div>
-		<p ALIGN=left><b><u>Deiturak:</u></b> Iñigo Sanz eta Olatz Romeo</p><br/> 
+		<p ALIGN=left><b><u>Deiturak:</u></b> I&ntilde;igo Sanz eta Olatz Romeo</p><br/> 
 		<p ALIGN=left><b><u>Espezialitatea:</u></b> Konputazioa eta Konputagailuen Ingenieritza</p><br/>
 		<p ALIGN=left><b><u>Argazkiak:</u></b><br/>
-			<img SRC="irudiak/koala_ecalypt.jpg" WIDTH=170 HEIGHT=120 ALT="Argazkia" ALIGN=middle >
-			<img SRC="irudiak/koala.jpg" WIDTH=170 HEIGHT=120 ALT="Argazkia" ALIGN=middle ><br/>
+			<img SRC="irudiak/koala_ecalypt.jpg" WIDTH=170 HEIGHT=120 ALT="Argazkia">
+			<!--br/><br/-->&nbsp;
+			<img SRC="irudiak/koala.jpg" WIDTH=170 HEIGHT=120 ALT="Argazkia"><br/>
 		</p><br/>
 		<p ALIGN=left> <b><u>Beste informaziorik:</b></u> Ez</p> <br/>
 		<br/>
+		<p><button onclick="geoAurkitu()">Erakutsi nere posizioa!</button></p>
+		<div id="map"></div><br/>
 		<br/>
 		</div>
     </section>

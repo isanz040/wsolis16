@@ -21,3 +21,4 @@ echo '</table><br/><br/>';
 echo 'Nire galderak/Galderak guztira DB: ' . $ownCounter . '/' . $glbCounter;
 
 ?>
+				

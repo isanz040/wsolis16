@@ -3,18 +3,32 @@
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 	<title>Quizzes</title>
-    <!-- <link rel='stylesheet' type='text/css' href='stylesPWS/style.css' /> -->
 	<link rel='stylesheet' type='text/css' href='stylesPWS/signUp.css' /> 
-	<link rel='stylesheet' 
-		   type='text/css' 
-		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
-		   href='stylesPWS/wide.css' />
-	<link rel='stylesheet' 
-		   type='text/css' 
-		   media='only screen and (max-width: 480px)'
-		   href='stylesPWS/smartphone.css' />
+	<link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='stylesPWS/wide.css' />
+	<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='stylesPWS/smartphone.css'/>
 		   
-	<script type="text/javascript" src="js/signUp.js"></script>		
+	<script type="text/javascript" src="js/signUp.js"></script>	
+        <script type="text/javascript">
+            function pasahitzakonprobatu() {
+              //  alert("Segituan bistaratuko zaizkizu galderak....itxaron pixka bat");
+  		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if (xhttp.readyState==4) {  //fitxategia kargatzean
+				//alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
+				var erantzuna = xhttp.responseText;	// zerbitzariaren erantzuna testu huts (html) formatuan
+				var obj = document.getElementById('emaitza');
+				obj.innerHTML = erantzuna;
+			}
+		}
+		setInterval(function datuakEskatu(){
+			//var egilea = document.getElementById('egilePosta').value;
+			var eskaera= "Enroll.php";
+                        //var eskaera= "erabGalderakIkusi.php?login=".concat(egilea);
+			xhttp.open("GET", eskaera, true);
+			xhttp.send(null);
+		}, 5000);
+           }
+	</script>	
 	
   </head>
   <body>
@@ -27,7 +41,7 @@
 		</header>
 		<nav class='main' id='n1' role='navigation'>
 			<span><a href='layout.html'>Home</a></span>
-			<span><a href='ShowQuizzes.php'>Quizzes</a></span>
+			<span><a href='ShowQuizzes.php'>Show Quizzes</a></span>
 			<span><a href='credits.html'>Credits</a></span>
 		</nav>
 		<section class="main" id="s1">
@@ -51,7 +65,8 @@
 				<input type="text" id="emaila" name="emaila" value="" class="form-input"><br/>
 	 		<br/>
 				<label class="label">Pasahitza<font color="RED">*</font>: </label>
-				<input type="password" id="pasahitza" name="pasahitza" value="" class="form-input"><br/>
+				<input type="password" id="pasahitza" name="pasahitza" value="" class="form-input" onchange="pasahitzakonprobatu()"><br/>
+                                <div id="emaitza" style="background-color:#ceff99"></div><br/>
 			
 	 		<br/>
 				<label class="label">Telefono Zenbakia<font color="RED">*</font>: </label>
@@ -98,4 +113,4 @@
 </div>
 </body>
 </html>
-					
+						
