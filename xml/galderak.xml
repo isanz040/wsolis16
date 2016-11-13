@@ -1,58 +1,92 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="seeQuestions.xsl"?>
 <assessmentItems>
-<assessmentItem complexity="0">
-	<itemBody> 
-		<p>Zer da Internet?</p>
-	</itemBody>
-	<correctResponse>
-		<value> Sareen sare bat.</value>
-	</correctResponse>
-	<senderEmail>
-		<value>oromeo001@ikasle.ehu.eus</value>
-	</senderEmail>
-</assessmentItem>
-<assessmentItem complexity="1">
-	<itemBody> 
-		<p>Ba al dabil zenbaki autoinkrementala?</p>
-	</itemBody>
-	<correctResponse>
-		<value>Bai!!</value>
-	</correctResponse>
-	<senderEmail>
-		<value>vivamexiko123@ikasle.ehu.eus</value>
-	</senderEmail>
-</assessmentItem>
-<assessmentItem complexity="4">
-	<itemBody> 
-		<p>Zenbat ordu sartu ditugu dena ondo inplementatzeko?</p>
-	</itemBody>
-	<correctResponse>
-		<value>Ziurrenik gehiegi..!</value>
-	</correctResponse>
-	<senderEmail>
-		<value>vivamexiko123@ikasle.ehu.eus</value>
-	</senderEmail>
-</assessmentItem>
-<assessmentItem complexity="5">
-	<itemBody>
-		<p>Beste probatxo bat</p>
-	</itemBody>
-	<correctResponse>
-		<value>Bai, ondo dijoa </value>
-	</correctResponse>
-	<senderEmail>
-		<value>oromeo001@ikasle.ehu.eus</value>
-	</senderEmail>
-</assessmentItem>
-<assessmentItem complexity="4">
-	<itemBody>
-		<p>Ba al doa AJAX?</p>
-	</itemBody>
-	<correctResponse>
-		<value>Noski!</value>
-	</correctResponse>
-	<senderEmail>
-		<value>vivamexiko123@ikasle.ehu.eus</value>
-	</senderEmail>
-</assessmentItem><assessmentItem complexity="3"><itemBody><p>Beste erabiltzaileen galderak freskatzen al dira?</p></itemBody><correctResponse><value>Baietz uste dut</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="1"><itemBody><p>Zein da errealaren kolorea?</p></itemBody><correctResponse><value>Txuri-urdina</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="1"><itemBody><p>Zein da errealaren kolorea?</p></itemBody><correctResponse><value>Txuri-urdina</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="2"><itemBody><p>Amanita cesarea jangarria da ala hilkorra da?</p></itemBody><correctResponse><value>Jangarria</value></correctResponse><senderEmail><value>ikasle666@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="4"><itemBody><p>Boletus edulis perretxikoa zein familikoa da euskaraz?</p></itemBody><correctResponse><value>Onddoena</value></correctResponse><senderEmail><value>ikasle666@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="5"><itemBody><p>Ondoen txapela azpian eztenak,laminak ala himenioa dago?</p></itemBody><correctResponse><value>Himenioa</value></correctResponse><senderEmail><value>ikasle666@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="4"><itemBody><p>Trompetas de la muerte zein kolorekoak dira?</p></itemBody><correctResponse><value>Beltzak</value></correctResponse><senderEmail><value>ikasle666@ikasle.ehu.eus</value></senderEmail></assessmentItem></assessmentItems>
+	<assessmentItem complexity="0">
+		<itemBody> 
+			<p>Zer da Internet?</p>
+		</itemBody>
+		<correctResponse>
+			<value> Sareen sare bat.</value>
+		</correctResponse>
+		<senderEmail>
+			<value>oromeo001@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="1">
+		<itemBody> 
+			<p>Ba al dabil zenbaki autoinkrementala?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Bai!!</value>
+		</correctResponse>
+		<senderEmail>
+			<value>vivamexiko123@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="4">
+		<itemBody> 
+			<p>Zenbat ordu sartu ditugu dena ondo inplementatzeko?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Ziurrenik gehiegi..!</value>
+		</correctResponse>
+		<senderEmail>
+			<value>vivamexiko123@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="1">
+		<itemBody>
+			<p>Zein da errealaren kolorea?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Txuri-urdina</value>
+		</correctResponse>
+		<senderEmail>
+			<value>oromeo001@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="2">
+		<itemBody>
+			<p>Amanita cesarea jangarria da ala hilkorra da?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Jangarria</value>
+		</correctResponse>
+		<senderEmail>
+			<value>ikasle666@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="4">
+		<itemBody>
+			<p>Boletus edulis perretxikoa zein familikoa da euskaraz?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Onddoena</value>
+		</correctResponse>
+		<senderEmail>
+			<value>ikasle666@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="5">
+		<itemBody>
+			<p>Ondoen txapela azpian eztenak,laminak ala himenioa dago?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Himenioa</value>
+		</correctResponse>
+		<senderEmail>
+			<value>ikasle666@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="4">
+		<itemBody>
+			<p>Trompetas de la muerte zein kolorekoak dira?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Beltzak</value>
+		</correctResponse>
+		<senderEmail>
+			<value>ikasle666@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+</assessmentItems>

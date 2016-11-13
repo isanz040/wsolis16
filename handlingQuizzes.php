@@ -14,7 +14,7 @@
   		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 			if (xhttp.readyState==4) {  //fitxategia kargatzean
-				alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
+				//alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
 				var erantzuna = xhttp.responseText;	// zerbitzariaren erantzuna testu huts (html) formatuan
 				var obj = document.getElementById('emaitza');
 				obj.innerHTML = erantzuna;

@@ -18,10 +18,9 @@ nav span            { margin: 0px 10px 0px 0px;
 						width: 50%;
 						display: inline-block;}
 
-#ErrorMsgs         	{ color: #f61; font-size: smaler}
+/*#ErrorMsgs         	{ color: #f61; font-size: smaler}*/
 .right{
 	font: 18px Arial, sans-serif;
-	font-weight: 750;
 	float: left;
 }
 .legend{
@@ -30,13 +29,14 @@ nav span            { margin: 0px 10px 0px 0px;
 }
 .label{
 	width: 12%;
-	font: 20px ;
 	float: left;
 }
 
 .form-input{
+
 	float: left;
 	width: 20%;
+        height: 60%;
 }
 
 .form-select{

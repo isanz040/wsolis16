@@ -8,27 +8,6 @@
 	<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='stylesPWS/smartphone.css'/>
 		   
 	<script type="text/javascript" src="js/signUp.js"></script>	
-        <script type="text/javascript">
-            function pasahitzakonprobatu() {
-              //  alert("Segituan bistaratuko zaizkizu galderak....itxaron pixka bat");
-  		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-			if (xhttp.readyState==4) {  //fitxategia kargatzean
-				//alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
-				var erantzuna = xhttp.responseText;	// zerbitzariaren erantzuna testu huts (html) formatuan
-				var obj = document.getElementById('emaitza');
-				obj.innerHTML = erantzuna;
-			}
-		}
-		setInterval(function datuakEskatu(){
-			//var egilea = document.getElementById('egilePosta').value;
-			var eskaera= "Enroll.php";
-                        //var eskaera= "erabGalderakIkusi.php?login=".concat(egilea);
-			xhttp.open("GET", eskaera, true);
-			xhttp.send(null);
-		}, 5000);
-           }
-	</script>	
 	
   </head>
   <body>
@@ -46,59 +25,60 @@
 		</nav>
 		<section class="main" id="s1">
 		
-	
- <!-- <form id="erregistro" name="erregistro" action="Enroll.php" method="POST" enctype="multipart/form-data">-->
-	  
+		  
   <form id="erregistro" name="erregistro" action="Enroll.php" method="POST" enctype="multipart/form-data">
 	  
 	   <legend class="legend">Erregistroa</legend> <p ALIGN=center ><font color="RED">* derrigorrez bete beharreko datuak</font></p> <br/><br/>
-			<div id="guraso">
-				<label class="label">Izena<font color="RED">*</font>: </label>
-				<input type="text" id="Izena" name="izena" value="" class="form-input"><br/>
+			
+                        <div id="guraso">
+			
+                          	<label class="label">Izena<font color="RED">*</font>: </label>
+				<input type="text" size="30" id="Izena" name="izena" value="" class="form-input" required><br/>
 			
 	  		<br/>
-				<label class="label">Abizenak<font color="RED">*</font>: </label>
-				<input type="text" id="abizenak" name="abizenak" value="" class="form-input"><br/>
+			
+                         	<label class="label">Abizenak<font color="RED">*</font>: </label>
+				<input type="text" size="30" id="abizenak" name="abizenak" value="" class="form-input" required><br/>
 			
 	  		<br/>
-	  			<label class="label">Eposta Elektronikoa<font color="RED">*</font>: </label>
-				<input type="text" id="emaila" name="emaila" value="" class="form-input"><br/>
-	 		<br/>
-				<label class="label">Pasahitza<font color="RED">*</font>: </label>
-				<input type="password" id="pasahitza" name="pasahitza" value="" class="form-input" onchange="pasahitzakonprobatu()"><br/>
-                                <div id="emaitza" style="background-color:#ceff99"></div><br/>
-			
+                        	<label class="label">Eposta Elektronikoa<font color="RED">*</font>:</label>
+				<input type="text" size="30" id="emaila" name="emaila" value="" class="form-input" required onBlur="emailaBalidatu()"><br/><br/>
+                   	<br/>
+                                <label class="label">Pasahitza<font color="RED">*</font>: </label>
+				<input type="password" size="30"id="pasahitza1" name="pasahitza1" value="" required class="form-input"><br/>
+                        <br/>
+				<label class="label">Egiaztatu Pasahitza<font color="RED">*</font>:</label>
+				<input type="password" size="30"id="pasahitza2" name="pasahitza2" value="" required class="form-input" onBlur="pasahitzaBerdinak()"><br/><br/>
+                                <span id="emaitza1" style="background-color:#ceff99"></span><br/>
 	 		<br/>
 				<label class="label">Telefono Zenbakia<font color="RED">*</font>: </label>
-				<input type="text" id="telefonoa" name="telefonoa" value="" class="form-input"><br/>
-				
+				<input type="text" size="30"id="telefonoa" name="telefonoa" value="" required class="form-input" onBlur="telefonoaBalidatu()"><br/><br/>
 			<br/>
 				<label class="label">Espezialitatea<font color="RED">*</font>: </label>
-				<select id ="espezialitatea" name="espezialitatea" tag ="espezialitate" class="form-select">
+				<select id ="espezialitatea" name="espezialitatea" required tag ="espezialitate" class="form-select">
 					  <option value="Aukeratu" onclick="DeSelect()">--Aukeratu--</option>
 					  <option value="Konputagailuen Ingenieritza" onclick="DeSelect()">Konputagailuen Ingenieritza</option>
 					  <option value="Konputazioa" onclick="DeSelect()">Konputazioa</option>
 					  <option value="Software Ingeneritza" onclick="DeSelect()">Software Ingeneritza</option>
 					  <option value="Besterik" onclick="espezialitateaSelect()">Besterik</option>
 				</select><br/>
+
 			<br/>
 				<label id="BesterikLabel" class="label" hidden>Espezialitatea?<font color="RED">*</font> </label>
-				<input type="text" id="besterik" name="besterik" value="" class="form-input" hidden><br/>
-			<br/>
+				<input type="text" size="30" id="besterik" name="besterik" value="" class="form-input" hidden><br/>
 			<br/>
 				<label class="label">Interesa duzun teknologiak eta erremintak: </label><br/>
-				<textarea id="interesa"class="textarea"rows="6" cols="60"> </textarea><br/>		
+				<textarea id="interesa" class="textarea"rows="6" cols="60"> </textarea><br/>		
 			<br/>
 				<label class="label">Argazkirik sartu nahi duzu?(.jpg, .jpeg, .gif edo .png formatuak bakarrik) 16KB max :</label>
-				<input type=file id="argazkiaIgo" name="argazkiaIgo" onchange="argazkiaAurreikuspen(event)"><br/><br/>
-				<!--<input type=button name="bidali" value="Bidali" onclick="egiaztatu_luzapena()" > <br/>-->
+				<input type=file id="argazkiaIgo" name="argazkiaIgo" onchange="argazkiaAurreikuspen(event)"><br/>
 				<img id="aurreikusi" height="150"/><br/>
 			<br/>
 			<br/>
 			<br/>
 			<br/>
 			<br/>
-			<br/><input type="submit" value="Balidatu" ALIGN="left" class="button" onclick="return ErregistroaBalidatu()"><br/>
+			<br/><input type="submit" value="Balidatu" ALIGN="left" onclick="return ErregistroaBalidatu()"><br/>
 			<br/>
 				
 			</div>
@@ -113,4 +93,3 @@
 </div>
 </body>
 </html>
-						

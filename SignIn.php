@@ -40,7 +40,7 @@
                </form>
           </div><!--amaiera gorputza-->
       
-        <p><a href='layout.html'>Bueltatu hasierara</a></p>
+       <!-- <p><a href='layout.html'>Bueltatu hasierara</a></p>-->
       </section>
 	
         <footer class='main' id='f1'>
@@ -52,25 +52,41 @@
 </html>	
 	
 <?php
-   require 'DBKonexioa.php';//datu-baserako konekxio fitxategia
+   require 'DBKonexioa.php';  //datu-baserako konekxio fitxategia
+   
+    session_start();
+   
 
-
-	if (isset($_POST['erabPasahitza'])){
+    if (isset($_POST['erabPasahitza'])){
 
 		$email=$_POST['erabPosta'];
-		$pass=$_POST['erabPasahitza'];
+                $pass=$_POST['erabPasahitza'];
 		$check_erabiltzaileak="select * from Erabiltzaile WHERE Emaila='$email' AND Pasahitza='$pass'";
 		$run=mysqli_query($esteka,$check_erabiltzaileak);
+                $row = mysqli_fetch_assoc($run);
 		$cont= mysqli_num_rows($run);
-		
+              
 		 if($cont==1){  
-		    header("location:handlingQuizzes.php?login=$email");  
-		 }else {
-		   echo "<script>alert('Erabiltzaile posta edo pasahitza ez dira zuzenak!')</script>"; 
+
+                       //SESIOA SORTU
+		       if($row['Emaila']=='web000@ehu.es'){
+	                    $_SESSION['erabmota']="irakasle";
+                            header("location:reviewingQuizes.php");
+ 
+	                }else{
+	                    $_SESSION['erabmota']="ikasle";
+                            header("location:handlingQuizzes.php?login=$email");  
+	                }
+		   
+                         $_SESSION['login_user'] = $row['Izena'];
+	                 $_SESSION['posta'] = $row['erabPosta'];
+                  }else {
+		       echo "<script>alert('Erabiltzaile posta edo pasahitza ez dira zuzenak!')</script>"; 
 		    
-		 }  
-	}
+		  }  
+       }
 
-	require 'DBKonexioaItxi.php';
 
-?>	
+    require 'DBKonexioaItxi.php';
+
+?>
