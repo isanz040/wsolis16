@@ -54,8 +54,6 @@
 <?php
    require 'DBKonexioa.php';  //datu-baserako konekxio fitxategia
    
-    session_start();
-   
 
     if (isset($_POST['erabPasahitza'])){
 
@@ -66,23 +64,23 @@
                 $row = mysqli_fetch_assoc($run);
 		$cont= mysqli_num_rows($run);
               
-		 if($cont==1){  
-
+		 if($cont==1){
                        //SESIOA SORTU
-		       if($row['Emaila']=='web000@ehu.es'){
-	                    $_SESSION['erabmota']="irakasle";
-                            header("location:reviewingQuizes.php");
+		       session_start();
+
+		       $_SESSION['login'] = $email;
+		       $_SESSION['name'] = $row['Izena'];
+		       if($row['Emaila'] == 'web000@ehu.es'){
+	                    $_SESSION['erabmota'] = "irakasle";
+                            header('location:reviewingQuizes.php');
  
 	                }else{
-	                    $_SESSION['erabmota']="ikasle";
-                            header("location:handlingQuizzes.php?login=$email");  
+	                    $_SESSION['erabmota'] = "ikasle";
+                            header('location:handlingQuizzes.php');  
 	                }
-		   
-                         $_SESSION['login_user'] = $row['Izena'];
-	                 $_SESSION['posta'] = $row['erabPosta'];
+
                   }else {
-		       echo "<script>alert('Erabiltzaile posta edo pasahitza ez dira zuzenak!')</script>"; 
-		    
+		       echo "<script>alert('Erabiltzaile posta edo pasahitza ez dira zuzenak!')</script>";
 		  }  
        }
 

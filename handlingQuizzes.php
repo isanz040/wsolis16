@@ -31,14 +31,21 @@
   </head>
   <body> 
 	<h2>SARTU GALDERAK</h2>
+	<div align="right"> 
+<div align="right"> 
+<form method="post" action="LogOut.php" id="logout" name="logout" enctype="multipart/form-data">
+<input type="submit" class="button" name="logout" value="Log out" /></form>
+</div>
+
         <div id="formularioa">
 		<?php echo '<form id="form-galderak" action="handlingQuizzes.php?login='.$_GET['login'].'" method="post">' ?>
                       <?php
                          require 'DBKonexioa.php';
+                         require 'Session.php';
                       ?>
 
                     	<br/><p><label>Egilearen ePosta:</label></p>
-                        <?php echo '<input name="egilePosta" type="text" id="egilePosta" value="'.$_GET['login'].'" readonly="readonly"><br/><br/>'
+                        <?php echo '<input name="egilePosta" type="text" id="egilePosta" value="'.$_SESSION['login'].'" readonly="readonly"><br/><br/>'
                         ?>
 
                      	<p><label>Galdera:</label></p>
