@@ -9,70 +9,84 @@
 
 	<div id='page-wrap'>
 	<header class='main' id='h1'>
-
-<?php	session_start();
-	if(!isset($_SESSION['login'])){
-	      echo '<span class="right"><a href="signUp.html">SignUp</a>&nbsp;&nbsp;</span>
-	            <span class="right"><a href="SignIn.php">LogIn</a> </span>';
-	} else {
-	      echo '<i>' . $_SESSION['login'] . '</i> barruan da.<br/>';
-	      echo '<span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
-	            <div align="right">
-	            <form method="post" action="LogOut.php" id="logout" name="logout" enctype="multipart/form-data">
-	            <input type="submit" class="button" name="logout" value="Logout" /></form>
-	            </div>';
-	}
-?>
+		  <span class="right"><a href="signUp.html">SignUp</a>&nbsp;&nbsp;</span>
+		  <span class="right"><a href="SignIn.php">LogIn</a> </span>
+		  <span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
 		<h2>Quiz: SARTU GALDERAK</h2>
 		</header>
 		
-     <script type="text/javascript" src="js/signUp.js"></script>
-     <script type="text/javascript" src="jquery/jquery-2.1.4.js"></script>
-
+    <script type="text/javascript" src="js/signUp.js"></script>
+	<script type="text/javascript" src="jquery/jquery-2.1.4.js"></script>
 	<script type="text/javascript">
-              function galderakIkusi() {
-                alert("Segituan bistaratuko zaizkizu galderak....itxaron pixka bat");
-  		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-			if (xhttp.readyState==4) {  //fitxategia kargatzean
-				//alert(xhttp.responseText);		// deiaren erantzuna string moduan bistaratu
-				var erantzuna = xhttp.responseText;	// zerbitzariaren erantzuna testu huts (html) formatuan
-				var obj = document.getElementById('emaitza');
-				obj.innerHTML = erantzuna;
-			}
-		}
-		setInterval(function datuakEskatu(){
-			var egilea = document.getElementById('egilePosta').value;
-			var eskaera= "erabGalderakIkusi.php?login=".concat(egilea);
-			xhttp.open("GET", eskaera, true);
-			xhttp.send(null);
-		}, 5000);
-           }
-	</script>
-  </head>
-  <body>
-	<nav class='main' id='n1' role='navigation'>
-		<span><a href='layout.php'>Home</a></span>
-		<?php if(isset($_SESSION['login'])){
-				echo "<span><a href='handlingQuizzes.php'>Insert questions</a></span>";
-				if($_SESSION['erabmota']=="irakasle"){
-					echo "<span><a href='reviewingQuizes.php'>Update questions</a></span>";
-					echo "<span><a href='ShowQuizzes.php'>View questions</a></span>";
-					echo "<span><a href='ShowUsersWithImage.php'>List users</a></span>";
-					echo "<span><a href='DeleteUser.php'>Remove user</a></span>";
-			  	} else echo "<span><a href='ShowQuizzes.php'>See my questions</a></span>";
-		      } else {
-				echo "<span><a href='PasahitzaAhaztu.html'>Password recovery</a></span>";
-				//echo "<span><a href='PasahitzaAhaztu.html'>GALDERAKHEMEN</a></span>";
-	      	  }
-		?>
-		<span><a href='credits.html'>Credits</a></span>
-	</nav>
-	<section class="main" id="s1">
+	
+            $(document).ready(function(){
 
+                  $("#botoiaGIkusi").click(function(){
+                       var egilea = document.getElementById('egilePosta').value;
+                       var eskaera= "erabGalderakIkusi.php?login=".concat(egilea);
+		       $("#galderakdiv").load(eskaera);
+                      // $("#galderakdiv").show();
+                       $("#botoiaGIkusi").hide();
+                       $("#botoiaGEzIkusi").show();
+                   });
+          
+	        $("#botoiaGBidali").click(function(){
+	   		var formularioa = $("#form-galderak").serializeArray();
+			$ajax({
+			        type: "POST",
+                                url: "handlingQuizzesJQuery.php",
+			       // url: "InsertQuestions.php",
+					data: formularioa,
+                    success : function(){
+                       alert("Galdera ondo gorde da!");
+                    }				
+			});					
+	        });
+			
+                  $('input').each(function(){
+                         var currentValue = $(this).val();
+                      // en el focus() comparamos si es el mismo por defecto, y si es asi lo vaciamos
+                      $(this).focus(function(){
+                         if( $(this).val() == currentValue ) {
+                          $(this).val('');
+						}
+                     });
+                  });
+                			
+ 
+                 $("#botoiaGEzIkusi").click(function(){
+			$('#galderakdiv').hide();
+                        $('#botoiaGEzIkusi').hide();
+                        $('#botoiaGIkusi').show();
+	       });
+
+});
+  </script>
+  </head>
+  <body> 
+		<nav class='main' id='n1' role='navigation'>
+			<span><a href='layout.php'>Home</a></span>
+			<span><a href='ShowQuizzes.php'>Show Quizzes</a></span>
+			<span><a href='credits.html'>Credits</a></span>
+		</nav>
+		<section class="main" id="s1">
+        <?php session_start();
+            if(!isset($_SESSION['login'])){
+                  echo '
+						<span class="right"><a href="signUp.html">SignUp</a>&nbsp;&nbsp;</span>
+                        <span class="right"><a href="SignIn.php">LogIn</a> </span>';
+            } else {
+                  echo '<div align="right"><i>' . $_SESSION['login'] . '</i> barruan da.<br/></div>';
+                  echo '<span class="right" style="display:none;"><a href="/logout">LogOut</a> </span>
+                        <div align="right">
+                        <form method="post" action="LogOut.php" id="logout" name="logout" enctype="multipart/form-data">
+                        <input type="submit" class="button" name="logout" value="Log out" /></form>
+                        </div>';
+            }
+        ?>
 	<div> 
         <div id="formularioa">
-		<?php echo '<form id="form-galderak" action="handlingQuizzes.php" method="post">' ?>
+		<?php echo '<form id="form-galderak" action="handlingQuizzesJQuery.php" method="post">' ?>
                       <?php
                          require 'DBKonexioa.php';
                          require 'Session.php';
@@ -100,8 +114,9 @@ erantzuna..."></textarea><br/><br/>
             <input type="radio" name="kalifiAukera" value=""checked>(Kalifikatu gabe)&nbsp;&nbsp;
 		</div>
         <br/>
-		<input type="submit" name="galderaBidali" value="Bidali Galdera" class="botoia" onclick="return GalderaBalidatu()">
-                <input type="button" value="Galderak Ikusi" onclick="galderakIkusi()">
+		<input type="submit" id="botoiaGBidali" name="galderaBidali" value="Bidali Galdera" class="botoia">
+                <input type="button" id="botoiaGIkusi" value="Galderak Ikusi" >
+                <input type="button" id="botoiaGEzIkusi" value="Galderak Ezkutatu" ">
 		<br/>
 		<br/>
 		<br/>	
@@ -109,7 +124,7 @@ erantzuna..."></textarea><br/><br/>
     	          
     </div><!--amaiera formularioa-->
 
-	<div id="emaitza" style="background-color:#ceff99"></div>
+	<div id="galderakdiv" style="background-color:#ceff99"></div>
 	<br/>
     <br/>
     <br/>
@@ -156,12 +171,11 @@ erantzuna..."></textarea><br/><br/>
             //echo "<p>DB-arekin konexioa egiten...</p>";
 			$ema = mysqli_query($esteka, $sql1);
 
-			if(!$ema){
-				die ('Errorea query-a gauzatzerakoan:' . msqli_error());
-			}else{
+			if(!$ema) die ('Errorea query-a gauzatzerakoan:' . msqli_error());
+			/*}else{
 			     echo "Galdera bat gehitu da!";
 			     //echo "<p> <a href='ShowQuizzes.php'>Galderak ikusi</a></p>";
-			}
+			}*/
 
                         /*XML-an sartzen*/
 		    $xmlGalderak = simplexml_load_file('xml/galderak.xml');
@@ -186,4 +200,4 @@ erantzuna..."></textarea><br/><br/>
 	
 require 'DBKonexioaItxi.php';
 
-?>		
+?>						

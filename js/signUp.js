@@ -34,13 +34,13 @@ function emailaBalidatu(){
 	expresioa= /^[a-z]+\d{3}\@(ikasle\.)?ehu\.(eus|es)/g;
 	if(!expresioa.test(emaila.value) ){
                 emaila.style.backgroundColor = "#FF0000";
-                emaila.focus();	
-		alert("ERROREA: " + emaila.value+ " helbidea ez da zuzena");
+                //emaila.focus();	
+		//alert("ERROREA: " + emaila.value+ " helbidea ez da zuzena");
               
              return false;	
 	}else{
             emaila.style.backgroundColor = "#66cc66";
-            emaila.focus();	
+            //emaila.focus();	
             return true;
         }
 
@@ -84,7 +84,7 @@ function espezialitateaBalidatu(){
 function pasahitzaBerdinak(){
 
         //PASAHITZA balidatzeko
-	var pass1= document.getElementById("pasahitza1");
+	var pass1= document.getElementById("pasahitza");
 	var pass2= document.getElementById("pasahitza2");
 	var mezua = document.getElementById('emaitza1');
         expresioa= /^\w{6}(\w*)/g;
@@ -113,12 +113,10 @@ function pasahitzaBerdinak(){
 };
 
 function erregistroOsoaBalidatu(){	
-		
-
 	if(izenaBalidatu() && abizenakBalidatu() && emailaBalidatu() && pasahitzaBerdinak() && telefonoaBalidatu() && espezialitateaBalidatu()){
-		
+
                 //BALIOAK IKUSI
-                var sAux=""
+                var sAux="";
 		var frm=document.getElementById("erregistro");
 		for (i=0;i<frm.elements.length;i++){	
 			sAux +="IZENA: " + frm.elements[i].name+"";
@@ -127,6 +125,23 @@ function erregistroOsoaBalidatu(){
 		alert(sAux);
 		return true;
 	
+        }else{
+            return false;
+	}   	
+};
+
+function erregistroPasahitzaBalidatu(){
+	if(emailaBalidatu() && telefonoaBalidatu() && pasahitzaBerdinak()){
+		
+                //BALIOAK IKUSI
+                var sAux="";
+		var frm=document.getElementById("erregistro");
+		for (i=0;i<frm.elements.length;i++){	
+			sAux +="IZENA: " + frm.elements[i].name+"";
+			sAux +="BALIOA: " + frm.elements[i].value+"\n";
+		}
+		alert(sAux);
+		return true;
         }else{
             return false;
 	}   	
@@ -159,7 +174,7 @@ function GalderaBalidatu(){
 	
    	//BALIOAK IKUSI
 	if (zuzena == 1){
-		var sAux=""
+		var sAux="";
 		var frm=document.getElementById("erregistro");
 		for (i=0;i<frm.elements.length;i++){	
 			sAux +="IZENA: " + frm.elements[i].name+"";
@@ -207,9 +222,30 @@ function DeSelect(){
 	document.getElementById("besterik").style.display = 'none';
 };
 
-function argazkiaAurreikuspen(event){
-	var aurreikuspena = document.getElementById("aurreikusi");
-    aurreikuspena.src = URL.createObjectURL(event.target.files[0]);
-};	
+/*function argazkiaAurreikusi(fitxategi) {
+    if (fitxategi.files && fitxategi.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('aurreikusi').src=e.target.result;
+        }
+        reader.readAsDataURL(fitxategiBox.files[0]);
+                    document.getElementById("aurreikusi").style.display = "block";
 
-													
+    }
+}*/
+
+//function argazkiaAurreikusi(input) {
+//    if (input.files && input.files[0]) {
+//        var reader = new FileReader();
+//        reader.onload = function (e) {
+//            $('#profile').remove();
+//            $('#argazkizatia').append("<img id='profile'  src='" + e.target.result + "' heigth='15%' width='15%' >");
+//        }
+//        reader.readAsDataURL(input.files[0]);
+//    }
+//}
+
+           
+//$("#argazkia").change(function () {
+//    argazkiaAurreikusi(this);
+//});

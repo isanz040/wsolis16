@@ -6,7 +6,7 @@
 			<p>Zer da Internet?</p>
 		</itemBody>
 		<correctResponse>
-			<value> Sareen sare bat.</value>
+			<value> Sareen sare bat</value>
 		</correctResponse>
 		<senderEmail>
 			<value>oromeo001@ikasle.ehu.eus</value>
@@ -17,10 +17,10 @@
 			<p>Ba al dabil zenbaki autoinkrementala?</p>
 		</itemBody>
 		<correctResponse>
-			<value>Bai!!</value>
+			<value>Bai</value>
 		</correctResponse>
 		<senderEmail>
-			<value>vivamexiko123@ikasle.ehu.eus</value>
+			<value>isanz040@ikasle.ehu.eus</value>
 		</senderEmail>
 	</assessmentItem>
 	<assessmentItem complexity="4">
@@ -28,10 +28,10 @@
 			<p>Zenbat ordu sartu ditugu dena ondo inplementatzeko?</p>
 		</itemBody>
 		<correctResponse>
-			<value>Ziurrenik gehiegi..!</value>
+			<value>Gehiegi</value>
 		</correctResponse>
 		<senderEmail>
-			<value>vivamexiko123@ikasle.ehu.eus</value>
+			<value>isanz040@ikasle.ehu.eus</value>
 		</senderEmail>
 	</assessmentItem>
 	<assessmentItem complexity="1">
@@ -89,4 +89,26 @@
 			<value>ikasle666@ikasle.ehu.eus</value>
 		</senderEmail>
 	</assessmentItem>
-</assessmentItems>
+	<assessmentItem complexity="3">
+		<itemBody>
+			<p>Xixak edota Tripakiak dira horiak?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Biak</value>
+		</correctResponse>
+		<senderEmail>
+			<value>ikasle666@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+	<assessmentItem complexity="4">
+		<itemBody>
+			<p>Konexio Id-a ondo jasotze al du erregistroak?</p>
+		</itemBody>
+		<correctResponse>
+			<value>Bai</value>
+		</correctResponse>
+		<senderEmail>
+			<value>isanz040@ikasle.ehu.eus</value>
+		</senderEmail>
+	</assessmentItem>
+<assessmentItem complexity="3"><itemBody><p>Galdera berria1</p></itemBody><correctResponse><value>Emaitza berria1</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="2"><itemBody><p>galdera2</p></itemBody><correctResponse><value>erantzun2</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="2"><itemBody><p>galdera2</p></itemBody><correctResponse><value>erantzun2</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="2"><itemBody><p>galdera2</p></itemBody><correctResponse><value>erantzun2</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem><assessmentItem complexity="2"><itemBody><p>galdera2</p></itemBody><correctResponse><value>erantzun2</value></correctResponse><senderEmail><value>oromeo001@ikasle.ehu.eus</value></senderEmail></assessmentItem></assessmentItems>

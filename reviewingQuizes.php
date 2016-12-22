@@ -41,7 +41,7 @@ if($emaitza) {
 
 echo('</table>');
 echo('<br/><br/>');
-echo('<div><a href="layout.html">Bueltatu hasierara</a></div>');
+echo('<div><a href="layout.php">Bueltatu hasierara</a></div>');
 echo('<br/><br/>');
 echo('</center></body>');
 

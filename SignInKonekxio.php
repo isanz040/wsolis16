@@ -27,7 +27,7 @@
             </div><!-- gorputza-->
         </div><!-- edukiontzi -->
 
-       <p><a href='layout.html'>Bueltatu hasierara</a></p>
+       <p><a href='layout.php'>Bueltatu hasierara</a></p>
    </body>
 </html>	
 	<?php
@@ -62,7 +62,7 @@
 			} else {
 				echo "Erregistro bat gehitu da!";
 				echo "<p> <a href='ShowUsers.php'>Erregistroak ikusi</a></p>";
-				echo "<p> <a href='layout.html'>Bueltatu hasierara</a></p>";
+				echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
 			}
                  
 		    header('location:InsertQuestion.php');  

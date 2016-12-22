@@ -1,61 +1,176 @@
 <?php
 
-$dbhost = "mysql.hostinger.es";
-$dbuser = "u809326886_olis";
-$dbpass = "olarome13";
-$dbizen = "u809326886_quiz";
+require 'DBKonexioa.php';
+require 'SoapEskaera.php';
 
-$esteka = mysqli_connect ($dbhost, $dbuser, $dbpass, $dbizen) or die ("Konekxioa ez da gauzatu MySQLra");
-mysqli_select_db($esteka, $dbizen) or die ("Errorea datu basearen konekxioarekin");
+//fitxategi tamaina MB-ekin konparatzeko, MB 1 zenbat den adierazi eta gero biderketa egingo dugu
+define('MB', 1048576);
 
-/* $esteka =mysqli_connect ("mysql.hostinger.es","u628663284_olis","C0nguit0s","u628663284_quiz") or die ("Konekxioa ez da gauzatu MySQLra");
-mysqli_select_db($esteka,"u628663284_quiz") or die ("Errorea datu basearen konekxioarekin"); */
+$izena = $_POST["izena"];
+$abizena = $_POST["abizenak"];
+$emaila= $_POST['emaila'];
+$pasahitza= $_POST['pasahitza'];
+$telefonoa= $_POST["telefonoa"];
+$espezialitatea= $_POST["espezialitatea"];
+$besterik= $_POST["besterik"];
+/*$interesa=$_POST["interesa"];*/
+$ticketa=$_POST["ticketa"];
 
-/*$esteka= mysqli_connect("localhost", "root","", "quiz") or die ("Konekxioa ez da gauzatu MySQLra");
-mysqli_select_db($esteka,"Quiz") or die ("Errorea datu basearen konekxioarekin");*/
+$soap = eskaeraEmail($emaila);
+$soapPass = eskaeraPasahitza($pasahitza);
 
-#balioak hartu
-    $izena = $_POST["izena"];
-	$abizena = $_POST["abizenak"];
-	$emaila= $_POST['emaila'];
-	$pasahitza= $_POST["pasahitza"];
-	$telefonoa= $_POST["telefonoa"];
-	$espezialitatea= $_POST["espezialitatea"];
-    if ($espezialitatea== "Besterik"){
-	   $espezialitatea=$_POST['besterik'];
-    }
-	/*$interesa=$_POST["interesa"];*/
-	$argazkia= $_POST["argazkiaIgo"];
-
-if(!$esteka){
-	echo "Hutsegitea MySQLra konektatzerakoan. " . PHP_EOL;
-	echo "errno depurazio akatsa: " . mysqli_connect_errno().PHP_EOL;
-} else {
-    
-    #argazkia gorde
-    if (is_uploaded_file($_FILES['argazki']['tmp_name'])){
-
-        if ($_FILES["argazki"]["type"]=="image/jpg" || $_FILES["argazki"]["type"]=="image/jpeg" || $_FILES["argazki"]["type"]=="image/gif" ||  $_FILES["argazki"]["type"]=="image/png"){
-            #karaktere bereziak kendu
-            $imagenEscapes=mysqli_real_escape_string($esteka, file_get_contents($_FILES["argazki"]["tmp_name"]));
-        }
-
-    }
+if(strlen($ticketa)==0){
 	
+	
+	if ($soap=="EZ"){
+            echo "<script> alert('Ez zaude irakasgaian matrikulatuta.'); </script><br/>";
+            //header('Location: layout.php');
+	    echo "<p><a href='layout.php'>Bueltatu hasierara</a></p>";
 
-	$sql="INSERT INTO Erabiltzaile(Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea','argazkia)";
+	} else if ($soapPass=="BALIOGABEA"){
 
-	$ema = mysqli_query($esteka, $sql);
+		   echo "<script> alert('Pasahitza ahulegia da. Saiatu berriro.'); </script>";
+                    //echo $pasahitza;
+	            //echo $soapPass;
+	           echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+                   // header('Location: signUp.html');
 
-	if(!$ema){
-		die ('Errorea query-a gauzatzerakoan:' . msqli_error());
+
+	}else if(!filter_var($emaila, FILTER_VALIDATE_REGEXP, array("options" => array("regexp"=>"~[a-z]+[0-9]{3}\@(ikasle\.)?ehu\.(eus|es)~"))) == false) {
+
+			if ($espezialitatea=="Besterik") $espezialitatea = $besterik;
+
+			if (isset($_FILES['argazkia']) && $_FILES['argazkia']['size'] > 0) {                                        // erregistroa gehitu ARGAZKIAREKIN
+				  $tmpName = $_FILES['argazkia']['tmp_name']; //igotako fitxategia non dagoen esan.
+				  $fp = fopen($tmpName, 'r'); //ireki
+				  $irudiDatuak = fread($fp, filesize($tmpName)); //irakurri
+				  $irudiDatuak = addslashes($irudiDatuak);
+				  fclose($fp);
+                                  $pasahitza = sha1($pasahitza);
+				
+					$sql="INSERT INTO Erabiltzaile (Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea, Argazkia) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea','$irudiDatuak')";
+							$ema = mysqli_query($esteka, $sql);
+								if(!$ema){
+								die ('Errorea mysqli query-a gauzatzerakoan.');
+							} else {
+                                               
+                                                          echo "<script> alert('Jada erregistratu zara argazki eta guzti! Login egin webgunearen zerbitzu guztietaz disfrutatzeko'); </script>";
+				                          //header('Location: SignInKonekxio.php');
+				                          //echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+							  //echo "Erregistro bat gehitu da argazkiarekin!";
+                                                           //echo $pasahitza;
+						           //echo $ticketa;
+							   //echo "<p> <a href='ShowUsersWithImage.php'>Erregistroak ikusi</a></p>";
+							   echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+                                                           //header('Location: layout.php');
+						   }
+
+			}else{                             //ARGAZKIRIK GABE erregistro bat gehitu
+			
+                                  $pasahitza = sha1($pasahitza);
+				  $sql="INSERT INTO Erabiltzaile(Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea')";
+
+				  $ema = mysqli_query($esteka, $sql);
+
+				  if(!$ema){
+					die ('Errorea mysqli query-a gauzatzerakoan.');
+				  } else {
+                                   echo "<script> alert('JADA ERREGISTRATU ZARA! Login egin webgunearen zerbitzu guztietaz disfrutatzeko'); </script>";
+				   // echo "Erregistro bat gehitu da!";
+                                   //echo $soapPass;
+				   //echo "<p> <a href='ShowUsers.php'>Erregistroak ikusi</a></p>";
+                                   //header('Location: SignInKonekxio.php');
+				   echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+				  }
+			}
+
 	} else {
-		echo "Erregistro bat gehitu da!";
-		echo "<p> <a href='ShowUsers.php'> Erregistroak ikusi</a></p>";
+			echo("$emaila ez da baliozko emaila. Saiatu berriz.<br/>");
+                        echo "<p> <a href='signUp.html'>Saiatu berriz</a></p>";
+			echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+                        //header('Location: signUp.html');
 	}
-}
 
-mysqli_close($esteka);
-
-?>
+}else{					//TICKETA BADU
 	
+	$soapTicket=eskaeraTicketa($ticketa);
+	
+		if ($soap =="EZ"){
+			echo "<script> alert('Ez zaude irakasgaian matrikulatua.Ez duzu baimenik erregistratzeko'); </script>";
+                        echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+
+		} else if ($soapPass=='BALIOGABEA'){
+                    //echo $pasahitza;
+		    echo "<script> alert('$pasahitza pasahitza ahulegia da.Aldatu eta saiatu berriz.'); </script>";
+                    echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+                    echo "<p> <a href='signUp.html'>Saiatu Berriz</a></p>";
+                    //header('Location: signUp.php');
+			
+		} else if ($soapPass=='BALIOZKOA' && $soapTicket=='BAIMENIK GABEKO ERABILTZAILEA'){
+
+				echo("ERROREA.Baimenik gabeko erabiltzailea zara lortu baliozko ticket bat eta saiatu berriz.<br/>");
+                                //echo $pasahitza;
+                                //echo $soapTicketa;
+				//echo $ticketa;
+	                        echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+				echo "<p> <a href='signUp.html'>Saiatu berriz</a></p>";
+                                //header('Location: signUp.php');
+
+		} else if(!filter_var($emaila, FILTER_VALIDATE_REGEXP, array("options" => array("regexp"=>"~[a-z]+[0-9]{3}\@(ikasle\.)?ehu\.(eus|es)~"))) == false) {
+
+			if ($espezialitatea=="Besterik") $espezialitatea = $besterik;
+
+				 if (isset($_FILES['argazkia']) && $_FILES['argazkia']['size'] > 0) {                                        // erregistroa gehitu ARGAZKIAREKIN
+				  $tmpName = $_FILES['argazkia']['tmp_name']; //igotako fitxategia non dagoen esan.
+				  $fp = fopen($tmpName, 'r'); //ireki
+				  $irudiDatuak = fread($fp, filesize($tmpName)); //irakurri
+				  $irudiDatuak = addslashes($irudiDatuak);
+				  fclose($fp);
+                                  $pasahitza = sha1($pasahitza);
+				
+					$sql="INSERT INTO Erabiltzaile (Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea, Argazkia) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea','$irudiDatuak')";
+							$ema = mysqli_query($esteka, $sql);
+								if(!$ema){
+								die ('Errorea mysqli query-a gauzatzerakoan.');
+							} else {
+							   echo "<script> alert('Jada erregistratu zara argazki eta guzti! Login egin webgunearen zerbitzu guztietaz disfrutatzeko'); </script>";
+				                          //header('Location: SignInKonekxio.php');
+				                          //echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+							  //echo "Erregistro bat gehitu da argazkiarekin!";
+                                                           //echo $pasahitza;
+						           //echo $ticketa;
+							   //echo "<p> <a href='ShowUsersWithImage.php'>Erregistroak ikusi</a></p>";
+							   echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+                                                           //header('Location: layout.php');
+						   }
+
+			}else{                        //ARGAZKIRIK GABE erregistro bat gehitu
+			          
+                                  $pasahitza = sha1($pasahitza);
+				  $sql="INSERT INTO Erabiltzaile(Izena, Abizenak, Emaila, Pasahitza, Telefonoa, Espezialitatea) VALUES('$izena', '$abizena', '$emaila', '$pasahitza', '$telefonoa', '$espezialitatea')";
+
+				  $ema = mysqli_query($esteka, $sql);
+
+				  if(!$ema){
+					die ('Errorea mysqli query-a gauzatzerakoan.');
+				  } else {
+				   echo "<script> alert('Jada erregistratu zara! Login egin webgunearen zerbitzu guztietaz disfrutatzeko'); </script>";
+				   // echo "Erregistro bat gehitu da!";
+                                   //header('Location: SignInKonekxio.php');
+				   //echo "<p> <a href='ShowUsers.php'>Erregistroak ikusi</a></p>";
+				   echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+				  }
+			   }
+
+		} else {
+			echo("$emaila ez da baliozko emaila. Saiatu berriz.<br/>");
+			echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
+                        //header('Location: signUp.html');
+			echo "<p> <a href='signUp.html'>Saiatu berriz</a></p>";
+		}	
+}								
+
+		
+require 'DBKonexioaItxi.php';
+
+?>																

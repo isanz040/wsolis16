@@ -12,7 +12,7 @@ body					{font: 16px Arial, sans-serif;}
 
 section > div		{padding: 20px;float: left; width: 90%;}
 header				{background: #FFF8DC; text-align: center;font: 100% sans-serif;}
-nav, section		{background: #00FFFF; text-align: left;font: 22px Arial, sans-serif; }
+nav, section		{background: #cbeded; text-align: left;font: 22px Arial, sans-serif; }
 footer				{background: #FFF8DC; text-align: center;font: 100% sans-serif;}
 nav span            { margin: 0px 10px 0px 0px;
 						width: 50%;

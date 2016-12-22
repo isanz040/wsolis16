@@ -1,6 +1,0 @@
-Derrigorrezko atalez gain hainbat zuzenketa egin ditugu oraingoan:
-
-- 4. lab-eko lehen atal osoa
-- css-a ikutu dugu Chromen signUp formularioa behean ager ez dezan.
-- Zerbitzari aldeko egiaztapenean filter_var erabiltzean FILTER_VALIDATE_EMAIL generikoa ehu-ko epostaren expresio erregularrarekin ordezkatu dugu.
-- 3. lab-eko lehen hautazkoa konpondu dugu... hala-nola. Firefox-ekin ederki funtzionatzen du "besterik" espezialitatearen laukitxo emergenteak, Chrome-n ordea ez..

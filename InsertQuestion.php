@@ -4,9 +4,10 @@
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 	<title>Galderak Sartu</title> 
 	<link rel='stylesheet' type='text/css' href='stylesPWS/insertquestion.css' /> 
-	<link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='stylesPWS/wide.css' />
-	<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='stylesPWS/smartphone.css' />
 	<script type="text/javascript" src="js/signUp.js"></script>
+	<?php	echo "<script> alert('Orri hau jada ez dago funtzionamenduan, erabili handlingQuizzes.php'); </script><br/>";
+		echo "<script>location.href = 'http://oromeo001.hol.es/wsolis16-2/layout.php';</script>";
+	?>
   </head>
   <body> 
 	<h2>SARTU GALDERAK</h2>
@@ -47,7 +48,7 @@ erantzuna..."></textarea><br/><br/>
         <br/>
         <br/>
         <br/>
- 	<p> <a href='layout.html'>Bueltatu hasierara</a></p>
+ 	<p> <a href='layout.php'>Bueltatu hasierara</a></p>
         <br/>
         <br/>
         <br/>
@@ -103,7 +104,7 @@ erantzuna..."></textarea><br/><br/>
 
                         $xmlGalderak->asxml('xml/galderak.xml');
 
-		       header('location:layout.html');  
+		       header('location:layout.php');  
 
 		}else {       /*erabiltzailea EZ dago erregistratuta*/
 		

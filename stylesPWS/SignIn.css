@@ -1,14 +1,16 @@
 @charset "utf-8";
 * 						{margin: 0; padding: 0;}
-body{  font: bold 18px Arial, sans-serif;}
+body{  background: #cbeded;
+       font: bold 18px Arial, sans-serif;}
 
-#page-wrap				{margin: 1% auto; color: black;}
+
+#page-wrap			{margin: 1% auto; color: black;}
 #page-wrap >.main 		{border: 4px solid #FFF8DC; padding: 1%;
 						 margin-bottom: 1px; color: black;}
 
 section > div	{padding: 20px;float: left; width: 30%;}
 header		{background: #FFF8DC; text-align: center;font: 100% sans-serif;}
-nav		{background: #00FFFF; text-align: left;font: 20px Arial, sans-serif; }
+nav		{background: #cbeded; text-align: left;font: 20px Arial, sans-serif; }
 footer		{background: #FFF8DC; text-align: center;font: 100% sans-serif;}
 
 nav span{ 
@@ -24,7 +26,6 @@ nav span{
 } 
 #gorputza{
     background:#F0FFF0;
-    border:solid #000000;
     border-width: 4px 0;
     padding:40px 45px;
 }
@@ -44,25 +45,14 @@ input{
     width: 230px;
 }
  
- 
-.botoia{
-
-    background: #00CED1;
-    color: #000000;
-    width: 120px;
-    float: right;
+input_2{
+    border-radius:5px;
+    font:bold 17px Arial, sans-serif;
+    height: 15px;
+    line-height: 15px;
+    padding:0 1px;
+    width: 130px;
 }
- 
-/*"Sartu" botoiari animazioa emateko*/
-.botoia:active{
-    position: relative;
-    top: 3px;
-}
- 
-form,p{
-    margin:20;
-}
- 
 p{
     /*Gorputzeko elementuak beraien artean separatzeko*/
     padding-bottom: 5px;

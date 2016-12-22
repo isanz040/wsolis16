@@ -14,6 +14,6 @@ foreach($xml->assessmentItem as $galdera){
 }
 
 echo '</table><br/>';
-echo "<p> <a href='layout.html'>Bueltatu hasierara</a></p>";
+echo "<p> <a href='layout.php'>Bueltatu hasierara</a></p>";
 
 ?>

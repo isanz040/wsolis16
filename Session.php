@@ -1,6 +1,6 @@
 <?php
     session_start();
     if(!isset($_SESSION['login'])){
-        header('location:layout.html'); 
+        header('location:layout.php'); 
     }
 ?>
